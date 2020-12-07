@@ -20,8 +20,8 @@ services:
       - QT_X11_NO_MITSHM=1
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
-      - /tmp/.docker.xauth:/tmp/.docker.xauth:rw
-      - ~/.Xauthority:/root/.Xauthority:rw
+        #- /tmp/.docker.xauth:/tmp/.docker.xauth:rw
+        #      - ~/.Xauthority:/root/.Xauthority:rw
       - ~/share:/root/share:rw
     devices:
       - /dev/dri:/dev/dri

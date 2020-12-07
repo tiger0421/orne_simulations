@@ -38,4 +38,4 @@ $ docker exec -it ros-ign bash
 Move a robot with arrow keys, be sure the focus is on the gazebo.
 
 # Movie
-https://youtu.be/-P3QKu1Gb4I
+https://youtu.be/RZI7npUTQ7U
