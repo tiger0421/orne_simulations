@@ -23,13 +23,17 @@ $ . docker-set-gui.sh
 $ docker-compose up
 
 (Terminal B)
-$ docker exec -it ign gazebo /var/tmp/robot.sdf
+$ docker exec -it ros-ign bash
+# ign gazebo -r /var/tmp/robot.sdf
 
 (Terminal C)
-$ docker exec -it rosrun ros_ign_bridge parameter_bridge /lidar/points@sensor_msgs/PointCloud2@ignition.msgs.PointCloudPacked
+$ docker exec -it ros-ign bash
+# rosrun ros_ign_bridge parameter_bridge /lidar/points@sensor_msgs/PointCloud2@ignition.msgs.PointCloudPacked
 
 (Terminal D)
-$ docker exec -it rviz
+$ docker exec -it ros-ign bash
+# rviz
+(frame-id is "vehicle_blue/chassis/gpu_lidar")
 ```
 Move a robot with arrow keys, be sure the focus is on the gazebo.
 
