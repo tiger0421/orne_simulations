@@ -52,6 +52,8 @@ WORKDIR /root/ign_ros_ws/src/
 RUN git clone https://github.com/osrf/ros_ign.git -b melodic
 WORKDIR /root/ign_ros_ws
 RUN apt update && \
+    rosdep init && \
+    rosdep update && \
     rosdep install --from-paths src -i -y --rosdistro melodic \
     --skip-keys=ignition-gazebo2 \
     --skip-keys=ignition-gazebo3 \
@@ -66,13 +68,13 @@ RUN apt update && \
     apt autoremove -y && \
     apt clean && \
     rm -rf /var/lib/apt/lists/*
-RUN catkin_make install
+RUN /bin/bash -c ". /opt/ros/melodic/setup.bash; . /ign_ws/install/setup.bash; catkin_make install"
 
 RUN echo . /ign_ws/install/setup.bash >> /root/.bashrc && \
     echo . /opt/ros/melodic/setup.bash >> /root/.bashrc && \
     echo . /root/ign_ros_ws/devel/setup.bash >> /root/.bashrc
 
-COPY curl 
+RUN curl https://raw.githubusercontent.com/tiger0421/orne_simulations/main/robot.sdf > /var/tmp/robot.sdf
 
 WORKDIR /root
 CMD /bin/bash
